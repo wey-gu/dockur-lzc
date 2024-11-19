@@ -1,0 +1,37 @@
+lzc-sdk-version: "0.1"
+name: Ollama
+package: cloud.lazycat.app.ollama
+version: 0.1.0
+description: Ollama Service on LazyCat Server with official WebUI
+homepage: https://ollama.com/
+author: Siwei GU
+application:
+  subdomain: ollama
+  background_task: true
+  multi_instance: false
+  gpu_accel: true
+  kvm_accel: false
+  usb_accel: false
+  routes:
+    - /=http://open-webui.cloud.lazycat.app.ollama.lzcapp:8080/
+  ingress:
+    - protocol: tcp
+      port: 11434
+      service: ollama
+    - protocol: tcp
+      port: 8080
+      service: open-webui
+services:
+  ollama:
+    image: ollama/ollama:latest
+    binds:
+      - /lzcapp/var/.ollama:/root/.ollama
+  open-webui:
+    image: ghcr.io/open-webui/open-webui:main
+    environment:
+      - OLLAMA_BASE_URL=http://ollama:11434
+      - WEBUI_SECRET_KEY=
+    depends_on:
+      - ollama
+    binds:
+      - /lzcapp/var/data:/app/backend/data
