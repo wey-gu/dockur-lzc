@@ -1,0 +1,28 @@
+lzc-sdk-version: "0.1"
+name: Windows 11
+package: cloud.lazycat.app.dockurwin11
+version: 0.1.0
+description: Windows 11 on LazyCat Server
+homepage: https://github.com/dockur/windows
+author: Siwei GU
+application:
+  subdomain: dockurwin11
+  background_task: true
+  multi_instance: false
+  gpu_accel: true
+  kvm_accel: true
+  usb_accel: true
+  routes:
+    - /=http://windows.cloud.lazycat.app.dockurwin11.lzcapp:8006/
+  ingress:
+    - protocol: udp
+      port: 3389
+      service: windows
+    - protocol: tcp
+      port: 3389
+      service: windows
+services:
+  windows:
+    image: dockurr/windows
+    environment:
+      - VERSION=11

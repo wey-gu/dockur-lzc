@@ -1,45 +1,42 @@
 {
-  "name": "Ollama",
-  "package": "cloud.lazycat.app.ollama",
-  "description": "Ollama Service on LazyCat Server with official WebUI",
-  "homepage": "https://ollama.com/",
+  "name": "Windows 11",
+  "package": "cloud.lazycat.app.dockurwin11",
+  "description": "Windows 11 on LazyCat Server",
+  "homepage": "https://github.com/dockur/windows",
   "author": "Siwei GU",
   "app_features": [
     "background_task",
-    "gpu_accel"
+    "gpu_accel",
+    "kvm_accel",
+    "usb_accel"
   ],
-  "subdomain": "ollama",
+  "subdomain": "dockurwin11",
   "version": "0.1.0",
   "iconPath": "icon.png",
-  "lastRouteType": "http",
+  "lastRouteType": "port",
   "port_mappings": {
-    "open-webui_8080_8080": {
+    "dockurwin11_8006_8006": {
       "use": true,
       "type": "port",
       "path": "/",
       "targetPath": "/",
       "protocol": "tcp"
     },
-    "ollama_11434_11434": {
+    "dockurwin11_3389_3389": {
       "use": true,
       "type": "port",
       "protocol": "tcp"
     }
   },
   "lastHttpPath": "/",
-  "lastHttpService": "open-webui",
-  "image_ollama_ollama_latest": {
-    "originalImage": "ollama/ollama:latest",
+  "lastHttpService": "windows",
+  "lastHttpPort": "8006",
+  "lastHttpTargetPath": "/",
+  "lastPortProtocol": "tcp",
+  "lastPort": "3389",
+  "lastService": "windows",
+  "image_dockurr_windows": {
+    "originalImage": "dockurr/windows",
     "push": false
-  },
-  "ollama_volume_ollama_/root/.ollama_action": "emptyDir",
-  "ollama_volume_/root/.ollama_location": "app_data",
-  "image_ghcr.io_open-webui_open-webui_main": {
-    "originalImage": "ghcr.io/open-webui/open-webui:main",
-    "push": false
-  },
-  "open-webui_volume_open-webui_/app/backend/data_action": "emptyDir",
-  "open-webui_volume_/app/backend/data_location": "app_data",
-  "lastHttpPort": "8080",
-  "lastHttpTargetPath": "/"
+  }
 }
