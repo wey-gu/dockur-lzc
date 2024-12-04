@@ -20,9 +20,6 @@ Just click the App, it'll take a while.
 
 <img width="1552" alt="Screenshot 2024-12-04 at 21 58 33" src="https://github.com/user-attachments/assets/c99cbb99-ff93-4706-b489-8f3f22fd2a91">
 
-<img width="1552" alt="Screenshot 2024-12-04 at 21 58 33" src="https://github.com/user-attachments/assets/45ca00ef-13ee-4574-b24a-b52c752b922f">
-
-
 ## Build
 
 ```bash
